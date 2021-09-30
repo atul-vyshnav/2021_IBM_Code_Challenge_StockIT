@@ -2,6 +2,20 @@
 
 This repository is made as part of the [IBM Good Tech Scholar](https://isl-good-tech-scholars.mybluemix.net/) workshop.
 
+### List of contributors
+
+- [Aparna A](https://github.com/Aparna-A)
+- [Atul Vyshnav R](https://github.com/atul-vyshnav)
+- [Gokul S Pillai](https://github.com/gokulspillai121)
+- [Kallu Sudarsan](https://github.com/Kallu0613)
+- [Krishnanand K](https://github.com/Krish4U2)
+- [Malavika S](https://github.com/Malsmi)
+
+**Mentors**
+
+- [Balakrishnan Rajenderan](https://github.com/brajend4)
+- [Mamatha Venkatesh](https://github.com/mamathakv)
+
 ## Theme: Digital Transformation for Social Change
 
 #### **Problem Statement** 
@@ -20,9 +34,11 @@ An interactive trading platform that educates novice users with trade suggestion
 - Mock trade sessions on real-time charts
 - ML price action prediction models
 
+### **Architecture**
+
 ### **Targeted User**
 
-Beginner traders with no prior trading experience.
+- Beginner traders with no prior trading experience to professionsal traders.
 
 ### **Outcome**
 
