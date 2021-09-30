@@ -4,3 +4,5 @@ This repository is made as part of the [IBM Good Tech Scholar](https://isl-good-
 
 ## Theme: Digital Transformation for Social Change
 
+**Problem Statement**
+> In a developing nation like India, only less than 5% of the population is actively involved in the stock market. It may be because of a lack of financial intelligence, trust, and education.
