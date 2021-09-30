@@ -46,3 +46,13 @@ An interactive trading platform that educates novice users with trade suggestion
 - Financial intelligence amongst people.
 - More investment in domestic companies.
 - Increase in GDP and Liquidity.
+
+### **Vision**
+
+- Personalized action alerts can be incorporated.
+- Mobile based trading has made stock market accessible to investors in small town.
+- With the proliferation of smart phone and mobile data consumption, it will gain popularity among the people.
+
+### **License**
+
+This repository is licensed under [Apache License, v2.0](https://github.com/atul-vyshnav/2021_IBM_Code_Challenge_StockIT/blob/main/LICENSE).
