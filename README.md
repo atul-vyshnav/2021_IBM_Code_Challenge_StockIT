@@ -22,7 +22,7 @@ An interactive trading platform that educates novice users with trade suggestion
 
 ### **Architecture**
 
-![Architecture](https://drive.google.com/file/d/15mZEBhyjKN6uTUNXHf7Coanf8Us2HT7u/view?usp=sharing)
+![Img](https://github.com/atul-vyshnav/2021_IBM_Code_Challenge_StockIT/blob/main/data/images/StockIT%20Architecture.jpg)
 
 ### **Targeted User**
 
