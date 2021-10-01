@@ -20,7 +20,7 @@ An interactive trading platform that educates novice users with trade suggestion
 - Mock trade sessions on real-time charts
 - ML price action prediction models
 
-[Demo](https://drive.google.com/file/d/1zIPUJeSFaYPGB3HCecwnbYCGScHuuu0s/view?usp=sharing)
+Short [Demo](https://drive.google.com/file/d/1zIPUJeSFaYPGB3HCecwnbYCGScHuuu0s/view?usp=sharing).
 
 ### **Architecture**
 
