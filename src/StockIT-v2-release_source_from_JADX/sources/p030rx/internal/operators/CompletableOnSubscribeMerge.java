@@ -1,0 +1,172 @@
+package p030rx.internal.operators;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import p030rx.Completable;
+import p030rx.CompletableSubscriber;
+import p030rx.Observable;
+import p030rx.Subscriber;
+import p030rx.Subscription;
+import p030rx.exceptions.CompositeException;
+import p030rx.plugins.RxJavaHooks;
+import p030rx.subscriptions.CompositeSubscription;
+
+/* renamed from: rx.internal.operators.CompletableOnSubscribeMerge */
+public final class CompletableOnSubscribeMerge implements Completable.OnSubscribe {
+    final boolean delayErrors;
+    final int maxConcurrency;
+    final Observable<Completable> source;
+
+    public CompletableOnSubscribeMerge(Observable<? extends Completable> observable, int i, boolean z) {
+        this.source = observable;
+        this.maxConcurrency = i;
+        this.delayErrors = z;
+    }
+
+    public void call(CompletableSubscriber completableSubscriber) {
+        CompletableMergeSubscriber completableMergeSubscriber = new CompletableMergeSubscriber(completableSubscriber, this.maxConcurrency, this.delayErrors);
+        completableSubscriber.onSubscribe(completableMergeSubscriber);
+        this.source.unsafeSubscribe(completableMergeSubscriber);
+    }
+
+    /* renamed from: rx.internal.operators.CompletableOnSubscribeMerge$CompletableMergeSubscriber */
+    static final class CompletableMergeSubscriber extends Subscriber<Completable> {
+        final CompletableSubscriber actual;
+        final boolean delayErrors;
+        volatile boolean done;
+        final AtomicReference<Queue<Throwable>> errors = new AtomicReference<>();
+        final AtomicBoolean once = new AtomicBoolean();
+        final CompositeSubscription set = new CompositeSubscription();
+        final AtomicInteger wip = new AtomicInteger(1);
+
+        public CompletableMergeSubscriber(CompletableSubscriber completableSubscriber, int i, boolean z) {
+            this.actual = completableSubscriber;
+            this.delayErrors = z;
+            if (i == Integer.MAX_VALUE) {
+                request(Long.MAX_VALUE);
+            } else {
+                request((long) i);
+            }
+        }
+
+        /* access modifiers changed from: package-private */
+        public Queue<Throwable> getOrCreateErrors() {
+            Queue<Throwable> queue = this.errors.get();
+            if (queue != null) {
+                return queue;
+            }
+            ConcurrentLinkedQueue concurrentLinkedQueue = new ConcurrentLinkedQueue();
+            if (this.errors.compareAndSet((Object) null, concurrentLinkedQueue)) {
+                return concurrentLinkedQueue;
+            }
+            return this.errors.get();
+        }
+
+        public void onNext(Completable completable) {
+            if (!this.done) {
+                this.wip.getAndIncrement();
+                completable.unsafeSubscribe((CompletableSubscriber) new CompletableSubscriber() {
+
+                    /* renamed from: d */
+                    Subscription f1345d;
+                    boolean innerDone;
+
+                    public void onSubscribe(Subscription subscription) {
+                        this.f1345d = subscription;
+                        CompletableMergeSubscriber.this.set.add(subscription);
+                    }
+
+                    public void onError(Throwable th) {
+                        if (this.innerDone) {
+                            RxJavaHooks.onError(th);
+                            return;
+                        }
+                        this.innerDone = true;
+                        CompletableMergeSubscriber.this.set.remove(this.f1345d);
+                        CompletableMergeSubscriber.this.getOrCreateErrors().offer(th);
+                        CompletableMergeSubscriber.this.terminate();
+                        if (CompletableMergeSubscriber.this.delayErrors && !CompletableMergeSubscriber.this.done) {
+                            CompletableMergeSubscriber.this.request(1);
+                        }
+                    }
+
+                    public void onCompleted() {
+                        if (!this.innerDone) {
+                            this.innerDone = true;
+                            CompletableMergeSubscriber.this.set.remove(this.f1345d);
+                            CompletableMergeSubscriber.this.terminate();
+                            if (!CompletableMergeSubscriber.this.done) {
+                                CompletableMergeSubscriber.this.request(1);
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        public void onError(Throwable th) {
+            if (this.done) {
+                RxJavaHooks.onError(th);
+                return;
+            }
+            getOrCreateErrors().offer(th);
+            this.done = true;
+            terminate();
+        }
+
+        public void onCompleted() {
+            if (!this.done) {
+                this.done = true;
+                terminate();
+            }
+        }
+
+        /* access modifiers changed from: package-private */
+        public void terminate() {
+            Queue queue;
+            if (this.wip.decrementAndGet() == 0) {
+                Queue queue2 = this.errors.get();
+                if (queue2 == null || queue2.isEmpty()) {
+                    this.actual.onCompleted();
+                    return;
+                }
+                Throwable collectErrors = CompletableOnSubscribeMerge.collectErrors(queue2);
+                if (this.once.compareAndSet(false, true)) {
+                    this.actual.onError(collectErrors);
+                } else {
+                    RxJavaHooks.onError(collectErrors);
+                }
+            } else if (!this.delayErrors && (queue = this.errors.get()) != null && !queue.isEmpty()) {
+                Throwable collectErrors2 = CompletableOnSubscribeMerge.collectErrors(queue);
+                if (this.once.compareAndSet(false, true)) {
+                    this.actual.onError(collectErrors2);
+                } else {
+                    RxJavaHooks.onError(collectErrors2);
+                }
+            }
+        }
+    }
+
+    public static Throwable collectErrors(Queue<Throwable> queue) {
+        ArrayList arrayList = new ArrayList();
+        while (true) {
+            Throwable poll = queue.poll();
+            if (poll == null) {
+                break;
+            }
+            arrayList.add(poll);
+        }
+        if (arrayList.isEmpty()) {
+            return null;
+        }
+        if (arrayList.size() == 1) {
+            return (Throwable) arrayList.get(0);
+        }
+        return new CompositeException((Collection<? extends Throwable>) arrayList);
+    }
+}

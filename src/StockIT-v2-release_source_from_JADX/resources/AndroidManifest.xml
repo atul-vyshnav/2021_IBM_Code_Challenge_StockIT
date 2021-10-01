@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="2" android:versionName="2" android:compileSdkVersion="30" android:compileSdkVersionCodename="11" package="com.gmail.mailatulvr.stockitcopy" platformBuildVersionCode="30" platformBuildVersionName="11">
+    <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="30"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.USE_FINGERPRINT"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_CALENDAR"/>
+    <uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-feature android:glEsVersion="20000" android:required="true"/>
+    <uses-feature android:name="android.software.leanback" android:required="false"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE"/>
+        </intent>
+        <intent>
+            <action android:name="android.media.action.ACTION_VIDEO_CAPTURE"/>
+        </intent>
+    </queries>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <permission android:name="com.gmail.mailatulvr.stockitcopy.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.gmail.mailatulvr.stockitcopy.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT"/>
+    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE"/>
+    <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE"/>
+    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT"/>
+    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.READ_APP_BADGE"/>
+    <uses-permission android:name="com.oppo.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.oppo.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_READ"/>
+    <uses-permission android:name="me.everything.badger.permission.BADGE_COUNT_WRITE"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
+    <application android:theme="@style/AppTheme" android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="com.thunkable.live.MainApplication" android:allowBackup="false" android:supportsRtl="false" android:usesCleartextTraffic="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+        <meta-data android:name="expo.modules.updates.ENABLED" android:value="false"/>
+        <meta-data android:name="expo.modules.updates.EXPO_UPDATES_CHECK_ON_LAUNCH" android:value="NEVER"/>
+        <meta-data android:name="expo.modules.updates.EXPO_UPDATES_LAUNCH_WAIT_MS" android:value="0"/>
+        <meta-data android:name="expo.modules.updates.EXPO_UPDATE_URL" android:value="https://exp.host/@thunkable/thunkableCompanion"/>
+        <meta-data android:name="expo.modules.updates.EXPO_SDK_VERSION" android:value="41.0.0"/>
+        <meta-data android:name="expo.modules.updates.EXPO_RELEASE_CHANNEL" android:value="default"/>
+        <activity android:theme="@style/Theme.App.SplashScreen" android:label="@string/app_name" android:name="com.thunkable.live.MainActivity" android:launchMode="singleTask" android:screenOrientation="portrait" android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
+        <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-3940256099942544~3347511713"/>
+        <meta-data android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT" android:value="true"/>
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/GOOGLE_MAPS_API_KEY_ANDROID"/>
+        <meta-data android:name="org.unimodules.core.AppLoader#react-native-headless" android:value="org.unimodules.adapters.react.apploader.RNHeadlessAppLoader"/>
+        <receiver android:name="com.learnium.RNDeviceInfo.RNDeviceReceiver" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="com.android.vending.INSTALL_REFERRER"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.masteratul.exceptionhandler.DefaultErrorScreen"/>
+        <provider android:name="p008cl.json.RNShareFileProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.rnshare.fileprovider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/share_download_paths"/>
+        </provider>
+        <provider android:name="com.reactnativecommunity.webview.RNCWebViewFileProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.fileprovider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <provider android:name="com.RNFetchBlob.Utils.FileProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.provider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/provider_paths"/>
+        </provider>
+        <provider android:name="expo.modules.filesystem.FileSystemFileProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.FileSystemFileProvider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_system_provider_paths"/>
+        </provider>
+        <activity android:theme="@style/Base.Theme.AppCompat" android:name="com.theartofdev.edmodo.cropper.CropImageActivity"/>
+        <provider android:name="expo.modules.imagepicker.ImagePickerFileProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.ImagePickerFileProvider" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/image_picker_provider_paths"/>
+        </provider>
+        <service android:name="expo.modules.location.services.LocationTaskService" android:exported="false" android:foregroundServiceType="8"/>
+        <meta-data android:name="onesignal_app_id" android:value=""/>
+        <meta-data android:name="onesignal_google_project_number" android:value="str:REMOTE"/>
+        <receiver android:name="com.onesignal.GcmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter android:priority="999">
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.gmail.mailatulvr.stockitcopy"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.onesignal.NotificationOpenedReceiver"/>
+        <service android:name="com.onesignal.HmsMessageServiceOneSignal" android:exported="false">
+            <intent-filter>
+                <action android:name="com.huawei.push.action.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.onesignal.NotificationOpenedActivityHMS">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.onesignal.GcmIntentService"/>
+        <service android:name="com.onesignal.GcmIntentJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.onesignal.RestoreJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.onesignal.RestoreKickoffJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:name="com.onesignal.SyncService" android:stopWithTask="true"/>
+        <service android:name="com.onesignal.SyncJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.onesignal.PermissionsActivity"/>
+        <service android:name="com.onesignal.NotificationRestoreService"/>
+        <receiver android:name="com.onesignal.BootUpReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.onesignal.UpgradeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED"/>
+            </intent-filter>
+        </receiver>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity" android:exported="false" android:excludeFromRecents="true"/>
+        <service android:name="com.google.android.gms.auth.api.signin.RevocationBoundService" android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" android:exported="true"/>
+        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <service android:name="com.google.firebase.messaging.FirebaseMessagingService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND" android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="com.google.firebase.iid.FirebaseInstanceIdService" android:exported="true">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false"/>
+        <activity android:theme="@style/Theme.Translucent" android:name="com.google.android.gms.ads.AdActivity" android:exported="false" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+        <provider android:name="com.google.android.gms.ads.MobileAdsInitProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.mobileadsinitprovider" android:initOrder="100"/>
+        <service android:name="com.google.android.gms.ads.AdService" android:enabled="true" android:exported="false"/>
+        <provider android:name="com.google.firebase.provider.FirebaseInitProvider" android:exported="false" android:authorities="com.gmail.mailatulvr.stockitcopy.firebaseinitprovider" android:initOrder="100"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <service android:name="androidx.room.MultiInstanceInvalidationService" android:exported="false"/>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="4.0.0"/>
+        <activity android:theme="@style/Theme.Translucent.NoTitleBar" android:name="com.android.billingclient.api.ProxyBillingActivity" android:exported="false" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize"/>
+        <service android:name="io.nlopez.smartlocation.activity.providers.ActivityGooglePlayServicesProvider$ActivityRecognitionService" android:exported="false"/>
+        <service android:name="io.nlopez.smartlocation.geofencing.providers.GeofencingGooglePlayServicesProvider$GeofencingService" android:exported="false"/>
+        <service android:name="io.nlopez.smartlocation.geocoding.providers.AndroidGeocodingProvider$AndroidGeocodingService" android:exported="false"/>
+        <activity android:name="com.google.android.play.core.missingsplits.PlayCoreMissingSplitsActivity" android:enabled="false" android:exported="false" android:process=":playcore_missing_splits_activity" android:stateNotNeeded="true" android:launchMode="singleInstance"/>
+        <activity android:theme="@style/Theme.PlayCore.Transparent" android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity" android:enabled="false" android:exported="false" android:stateNotNeeded="true"/>
+        <service android:name="com.google.android.play.core.assetpacks.AssetPackExtractionService" android:enabled="false" android:exported="true"/>
+    </application>
+</manifest>
